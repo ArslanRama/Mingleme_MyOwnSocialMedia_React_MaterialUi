@@ -54,12 +54,26 @@ app.use("/posts", postRoutes);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001;
+const DB_NAME = process.env.DB_NAME || "myapp";
+
+mongoose.set("strictQuery", true);
+//or
+mongoose.set("strictQuery", false);
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    dbName: DB_NAME,
   })
-  .then(() => {
+  .then(async () => {
+    await User.deleteMany({});
+    await Post.deleteMany({});
+
+    await User.insertMany(users);
+    console.log("Users added to the database!");
+
+    await Post.insertMany(posts);
+    console.log("Posts added to the database!");
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     /* ADD DATA ONE TIME */
