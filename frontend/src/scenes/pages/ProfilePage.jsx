@@ -14,18 +14,27 @@ const ProfilePage = () => {
   const token = useSelector((state) => state.token);
   const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
 
-  const getUser = async () => {
+  const getUser = async (userId, token) => {
     const response = await fetch(`http://localhost:3001/users/${userId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
     const data = await response.json();
-    setUser(data);
+    return data;
   };
 
   useEffect(() => {
-    getUser();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    const fetchData = async () => {
+      try {
+        const data = await getUser(userId, token);
+        setUser(data);
+      } catch (error) {
+        // handle error
+      }
+    };
+
+    fetchData();
+  }, [userId, token]);
 
   if (!user) return null;
 
