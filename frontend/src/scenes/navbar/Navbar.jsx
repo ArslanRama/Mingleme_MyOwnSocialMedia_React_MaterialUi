@@ -50,14 +50,19 @@ const Navbar = () => {
           color="primary"
           onClick={() => navigate("/home")}
           sx={{
+            textTransform: "uppercase",
+            transition: "color 0.2s ease-in-out",
             "&:hover": {
               color: primaryLight,
               cursor: "pointer",
+              textDecoration: "underline",
             },
           }}
         >
-          Connectly
+          <span style={{ textTransform: "none" }}>MINGLE</span>
+          <span style={{ textTransform: "capitalize" }}>me</span>
         </Typography>
+
         {isNonMobileScreens && (
           <FlexBetween
             backgroundColor={neutralLight}
