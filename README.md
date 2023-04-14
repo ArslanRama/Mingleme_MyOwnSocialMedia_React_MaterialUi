@@ -2,6 +2,8 @@
 
 This is a complete full-stack responsive social media application that includes authentication, likes, and dark mode features. It is built using React, MongoDB, and MUI.
 
+## ⚠️ Warning: Docker will be implemented soon for the server
+
 ## Features
 
 - **Authentication**: Users can create an account, log in, and log out of the app. Passwords are hashed for security.
