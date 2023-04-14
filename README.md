@@ -20,10 +20,11 @@ This is a complete full-stack responsive social media application that includes 
 2. Navigate to the root directory and run `npm install`.
 3. Navigate to the `client` directory and run `npm install`.
 4. Create a `.env` file in the root directory and add the following environment variables:
+   
 MONGO_URI=<your_mongo_uri>
 SECRET_KEY=<your_secret_key>
 
-5. Run `npm start` in the root directory to start the server and client.
+1. Run `npm start` in the root directory to start the server and client.
 
 ## Contributing
 
