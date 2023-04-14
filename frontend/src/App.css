@@ -1,18 +1,22 @@
+/* Center align the text within the app */
 .App {
   text-align: center;
 }
 
+/* Set the height of the logo to be 40% of the viewport */
 .App-logo {
-  height: 40vmin;
+  height: 40vh;
   pointer-events: none;
 }
 
+/* Apply a spinning animation to the logo if motion is enabled */
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: spin 20s linear infinite;
   }
 }
 
+/* Style the app header with a dark background and white text */
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -24,11 +28,13 @@
   color: white;
 }
 
+/* Style the app link with a blue color */
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+/* Define the spinning animation */
+@keyframes spin {
   from {
     transform: rotate(0deg);
   }
