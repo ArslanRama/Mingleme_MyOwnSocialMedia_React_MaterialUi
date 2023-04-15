@@ -89,6 +89,7 @@ const LoginForm = () => {
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
+
   // Showpassword function
 const [showPassword, setShowPassword] = useState(false);
 

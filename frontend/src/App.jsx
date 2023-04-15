@@ -5,9 +5,9 @@ import { useSelector } from "react-redux";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme";
-import LoginPage from "scenes/pages/loginPage/LoginForm";
-import HomePage from "scenes/pages/HomePage";
-import ProfilePage from "scenes/pages/ProfilePage";
+import LoginPage from "./pages/loginPage/LoginForm";
+import HomePage from "./pages/HomePage";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   const mode = useSelector((state) => state.mode);
