@@ -41,7 +41,6 @@ const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isNonMobile = useMediaQuery("(min-width:600px)");
-  const isLogin = pageType === "login";
 
   // Showpassword function
   const [showPassword, setShowPassword] = useState(false);
@@ -54,7 +53,7 @@ const LoginPage = () => {
     event.preventDefault();
   };
 
-  const login = async (values, onSubmitProps) => {
+  const handleLogin = async (values, onSubmitProps) => {
     const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -101,7 +100,7 @@ const LoginPage = () => {
           <Formik
             initialValues={initialValuesLogin}
             validationSchema={loginSchema}
-            onSubmit={login}
+            onSubmit={handleLogin}
           >
             {({
               values,
@@ -110,8 +109,6 @@ const LoginPage = () => {
               handleBlur,
               handleChange,
               handleSubmit,
-              setFieldValue,
-              resetForm,
             }) => (
               <form onSubmit={handleSubmit}>
                 <Box
@@ -177,7 +174,7 @@ const LoginPage = () => {
                       "&:hover": { color: palette.primary.main },
                     }}
                   >
-                    {isLogin ? "LOGIN" : "REGISTER"}
+                   Login
                   </Button>
                   <Typography
                     onClick={handleRegister}
