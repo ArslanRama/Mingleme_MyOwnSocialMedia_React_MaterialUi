@@ -60,7 +60,6 @@ const initialValuesRegister = {
 };
 
 const RegisterPage = () => {
-  const [pageType, setPageType] = useState("login");
   const { palette } = useTheme();
   const navigate = useNavigate();
   const isNonMobile = useMediaQuery("(min-width:600px)");

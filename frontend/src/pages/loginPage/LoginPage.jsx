@@ -36,7 +36,6 @@ const initialValuesLogin = {
 };
 
 const LoginPage = () => {
-  const [pageType, setPageType] = useState("login");
   const { palette } = useTheme();
   const dispatch = useDispatch();
   const navigate = useNavigate();
