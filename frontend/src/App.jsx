@@ -1,13 +1,13 @@
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
-
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme";
-import LoginPage from "./pages/loginPage/LoginForm";
+import LoginPage from "./pages/loginPage/LoginPage";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   const mode = useSelector((state) => state.mode);
@@ -21,6 +21,7 @@ function App() {
           <CssBaseline />
           <Routes>
             <Route path="/" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
             <Route
               path="/home"
               element={isAuth ? <HomePage /> : <Navigate to="/" />}
