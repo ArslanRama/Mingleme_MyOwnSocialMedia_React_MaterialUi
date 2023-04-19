@@ -8,37 +8,36 @@ const LoginPage = () => {
   return (
     <Box>
       <Box
-        width="100%"
-        bgcolor={theme.palette.background.alt}
-        p="1rem 6%"
-        textAlign="center"
+        bgcolor={theme.palette.primary.main}
+        p={2}
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
       >
-        <Typography
+       <Typography
+          variant="h4"
+          component="h1"
           fontWeight="bold"
-          fontSize="32px"
-          color="primary"
-          style={{ textTransform: "capitalize" }}
+          sx={{ ml: 2, color: "#fff" }}
         >
-          <span style={{ textTransform: "none" }}>MINGLE</span>
-          <span style={{ textTransform: "uppercase" }}>me</span>
+          MINGLE<span style={{ color: theme.palette.secondary.main }}>me</span>
         </Typography>
       </Box>
 
       <Box
         width={isNonMobileScreens ? "50%" : "93%"}
-        p="2rem"
+        p={4}
         m="2rem auto"
-        borderRadius="1.5rem"
-        bgcolor={theme.palette.background.alt}
+        borderRadius={16}
+        bgcolor="#fff"
+        boxShadow={5}
       >
         <Typography
-          fontWeight="500"
+          fontWeight="bold"
           variant="h5"
-          sx={{ mb: "1.5rem", textTransform: "uppercase" }}
+          sx={{ mb: 3, textTransform: "uppercase", color: theme.palette.primary.main }}
         >
-          <span style={{ textTransform: "none" }}>Welcome to </span>
-          <span style={{ textTransform: "capitalize" }}>Mingle</span>
-          <span style={{ textTransform: "none" }}>me!</span>
+          Welcome to Mingleme!
         </Typography>
         <LoginForm />
       </Box>

@@ -21,6 +21,7 @@ import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLogin } from "state";
+import axios from "axios";
 
 const loginSchema = yup.object().shape({
   email: yup
@@ -53,26 +54,30 @@ const LoginPage = () => {
   };
 
   const handleLogin = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch("http://localhost:3001/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(values),
-    });
-    const loggedIn = await loggedInResponse.json();
-    onSubmitProps.resetForm();
-    if (loggedIn) {
-      dispatch(
-        setLogin({
-          user: loggedIn.user,
-          token: loggedIn.token,
-        })
+    try {
+      const loggedInResponse = await axios.post(
+        "http://localhost:3001/auth/login",
+        values,
+        { headers: { "Content-Type": "application/json" } }
       );
-      navigate("/home");
+      const loggedIn = loggedInResponse.data;
+      onSubmitProps.resetForm();
+      if (loggedIn) {
+        dispatch(
+          setLogin({
+            user: loggedIn.user,
+            token: loggedIn.token,
+          })
+        );
+        navigate("/home");
+      }
+    } catch (error) {
+      console.error(error);
     }
   };
 
   const handleRegister = () => {
-    navigate('/register');
+    navigate("/register");
   };
 
   const theme = createTheme();
@@ -94,7 +99,6 @@ const LoginPage = () => {
             <Avatar sx={{ mr: 1 }}>
               <LockOutlinedIcon />
             </Avatar>
-
           </Box>
           <Formik
             initialValues={initialValuesLogin}
@@ -173,7 +177,7 @@ const LoginPage = () => {
                       "&:hover": { color: palette.primary.main },
                     }}
                   >
-                   Login
+                    Login
                   </Button>
                   <Typography
                     onClick={handleRegister}

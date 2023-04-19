@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import {
   Box,
   Button,
@@ -61,8 +61,17 @@ const initialValuesRegister = {
 
 const RegisterPage = () => {
   const { palette } = useTheme();
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const isNonMobile = useMediaQuery("(min-width:600px)");
+
+  useEffect(() => {
+    // Add this to retrieve the user data from local storage
+    const userData = localStorage.getItem("user");
+    if (userData) {
+      setUser(JSON.parse(userData));
+    }
+  }, []);
 
   const handleRegister = async (values, onSubmitProps) => {
     // this allows us to send form info with image
@@ -83,10 +92,12 @@ const RegisterPage = () => {
     onSubmitProps.resetForm();
 
     if (savedUser) {
-      navigate("/login");
+      // save user to state
+      setUser(savedUser);
+      // navigate to home page or some other page
+      navigate("/");
     }
   };
-
 
   const handleLogin = () => {
     navigate("/");
